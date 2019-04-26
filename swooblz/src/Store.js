@@ -4,10 +4,27 @@ export const Store = React.createContext(); //creates context object
 
 const initialState = {
     b_loggedIn: false,
+    username: "",
+    email : "",
+    profilePicture: "",
+    phoneNumber: "",
+    dateCreated: "",
+    friends: [],
 }
 
 function reducer(state, action) {
     switch(action.type){
+        case 'LOGGED_IN':
+            return{
+                ...state, 
+                b_loggedIn : true,
+                username: action.payload.username,
+                email: action.payload.email,
+                profilePicture: action.payload.profilePicture,
+                phoneNumber: action.payload.phoneNumber,
+                dateCreated : action.payload.dateCreated,
+                friends: action.payload.friends,
+            }
         default:
             return state;
     }
