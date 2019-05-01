@@ -5,8 +5,8 @@ export default function Friends(){
     const {state} = React.useContext(Store);
     
     return(
-        <div className="friends">
-            <h3>Friends</h3>
+        <div className="sidebar-section friends">
+            <h3 className="sidebar-h3">Friends</h3>
             <input type="text" placeholder="Search" />
         </div>
     )

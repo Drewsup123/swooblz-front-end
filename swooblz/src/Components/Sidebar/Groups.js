@@ -5,8 +5,8 @@ export default function Groups(){
     const {state} = React.useContext(Store);
     
     return(
-        <div className="groups">
-            <h3>Groups</h3>
+        <div className="sidebar-section groups">
+            <h3 className="sidebar-h3">Groups</h3>
             <input type="text" placeholder="Search Groups" />
         </div>
     )

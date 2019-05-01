@@ -43,11 +43,13 @@
   border-right:1px solid black;
   height:100vh;
 }
+.sidebar-section{
+  display:flex;
+  flex-direction: column;
+}
 
   /* UserInfo.JS */
   .user-info{
-    display:flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     height:15%;
@@ -73,13 +75,26 @@
   /* ACTION BUTTONS.JS */
   .action-buttons{
     height:5%;
-    display:flex;
-    flex-direction: column;
     align-items: center;
     justify-content: space-around;
   }
   
   .action-buttons button{
     height:40%;
+    width:90%;
+  }
+
+  /* FRIENDS.JS */
+  .friends{
+    height:30%;
+    width:90%;
+  }
+  .sidebar-h3{
+    font-size: 2rem;
+  }
+
+  /* GROUPS.JS */
+  .groups{
+    height:30%;
     width:90%;
   }
