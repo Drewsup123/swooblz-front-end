@@ -11,7 +11,7 @@ Users Collection
     username: "",
     email: "",
     profilePicture:"",
-    phoneBumber:"",
+    phoneNumber:"",
     dateCreated:"",
     friends:[filled with friend objects],
     groups:[filled with group objects],
@@ -22,8 +22,16 @@ Users Collection
     {
         name:"",
         dateCreated:"",
-        users:Number,
+        numOfUsers:Number,
+        users:[],
         createdBy:"username",
+        messages:[],
+        id:"",
+    }
+
+    PrivateMessages
+    {
+        between:[user1, user2],
         messages:[],
         id:"",
     }
