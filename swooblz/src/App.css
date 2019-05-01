@@ -1,5 +1,8 @@
 .App{
+  box-sizing: border-box;
+  max-height:100vh;
   padding:1% 5%;
+  display:flex;
 }
 #reference{
   color:white;
@@ -41,7 +44,7 @@
 .sidebar{
   width:15%;
   border-right:1px solid black;
-  height:100vh;
+  height:90vh;
 }
 .sidebar-section{
   display:flex;
@@ -98,3 +101,12 @@
     height:30%;
     width:90%;
   }
+
+/* 
+  CHAT.JS
+*/
+
+.chat{
+  width:70%;
+  border:2px solid red;
+}

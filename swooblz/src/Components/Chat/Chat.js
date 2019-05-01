@@ -6,7 +6,7 @@ export default function Chat(){
 
     return(
         <div className="chat">
-        
+            <h1 style={{textAlign:"center", fontSize:"3rem"}}>Swooblz</h1>
         </div>
     )
 }
