@@ -3,7 +3,7 @@ import React from 'react'
 export const Store = React.createContext(); //creates context object
 
 const initialState = {
-    b_loggedIn: false,
+    b_loggedIn: true,
     username: "",
     email : "",
     profilePicture: "",

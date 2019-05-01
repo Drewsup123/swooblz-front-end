@@ -148,9 +148,16 @@ const Authentication = () => {
     }
     
     return(
-        <div id="particlejs-background">
-            <h1>Sign Up</h1>
-            <button onClick={signInWithGoogle}>Google</button>
+        <div className="auth-container">
+            <div className="signup-container">
+                <h1 className="signup-header">Sign Up</h1>
+                <img 
+                    alt="Sign in with Google" 
+                    onClick={signInWithGoogle} 
+                    src="https://img.icons8.com/color/96/000000/google-logo.png" 
+                />
+            </div>
+            <a id="reference" href="https://icons8.com/icon/17949/google">Google icon by Icons8</a>
         </div>
     )
 }
