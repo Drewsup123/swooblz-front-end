@@ -10,6 +10,7 @@ const initialState = {
     phoneNumber: "",
     dateCreated: "",
     friends: [],
+    channels:[],
 }
 
 const empty = {

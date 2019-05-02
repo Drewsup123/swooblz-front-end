@@ -11,7 +11,7 @@ export default function HomePage(){
 
     return(
         <Grid columns="equal" className="homepage" style={{background: '#eee'}}>
-        
+
             <ColorPanel />
 
             <SidePanel />
