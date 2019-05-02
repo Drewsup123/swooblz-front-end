@@ -3,10 +3,20 @@ import React from 'react'
 export const Store = React.createContext(); //creates context object
 
 const initialState = {
-    b_loggedIn: false,
+    b_loggedIn: true,
     username: "Drewsup123",
     email : "drew@drew.com",
-    profilePicture: "https://cdn2.iconfinder.com/data/icons/random-outline-3/48/random_14-512.png",
+    profilePicture: "http://svgur.com/i/65U.svg",
+    phoneNumber: "",
+    dateCreated: "",
+    friends: [],
+}
+
+const empty = {
+    b_loggedIn: false,
+    username: "",
+    email : "",
+    profilePicture: "",
     phoneNumber: "",
     dateCreated: "",
     friends: [],
@@ -25,6 +35,8 @@ function reducer(state, action) {
                 dateCreated : action.payload.dateCreated,
                 friends: action.payload.friends,
             }
+        case 'SIGNED_OUT':
+            return{empty}
         default:
             return state;
     }
