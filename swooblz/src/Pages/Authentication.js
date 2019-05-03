@@ -3,7 +3,7 @@ import {Store} from '../Store';
 import '@firebase/firestore';
 import firebase from "firebase";
 import Load_Firebase from '../firebaseConfig';
-import {Grid, Form, Segment, Header, Message, Icon} from 'semantic-ui-react'
+import {Grid, Header, Icon} from 'semantic-ui-react'
 
 const Authentication = () => {
     const {state, dispatch} = React.useContext(Store);
@@ -22,6 +22,7 @@ const Authentication = () => {
             let today = new Date();
             const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             const payload = {
+                id:user.uid,
                 username : user.displayName,
                 email : user.email,
                 profilePicture : user.photoURL,

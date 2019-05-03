@@ -10,6 +10,7 @@ export default function Channels(){
     const [channelSettings, setChannelSettings] = React.useState({channelName:"", channelDetails:""});
     const [channels, setChannels] = React.useState([]);
     const [reload, setReload] = React.useState(false);
+    const [activeChannel, setActiveChannel] = React.useState('');
 
     const handleChange = e => {
         setChannelSettings({...channelSettings, [e.target.name]: e.target.value})
@@ -42,11 +43,16 @@ export default function Channels(){
         }
     }
 
-    React.useEffect(async()=>{
-        await Load_Firebase();
+    const changeChannel = channel => {
+        dispatch({type:"CHANGE_CURRENT_CHANNEL", payload:channel})
+        setActiveChannel(channel.id)
+    }
+
+    React.useEffect(()=>{
+        Load_Firebase();
         const channelsRef = firebase.database().ref('channels');
         let loadedChannels = [];
-        await channelsRef.on('child_added', snap=>{
+        channelsRef.on('child_added', snap=>{
             loadedChannels.push(snap.val())
         })
         setTimeout(()=>{setChannels(loadedChannels)},1000);
@@ -59,20 +65,21 @@ export default function Channels(){
                     <span>
                         <Icon name="exchange" />CHANNELS
                     </span>
-                    ({state.channels.length})<Icon name="add" style={{cursor:"pointer"}} onClick={()=>setOpen(true)}/>
+                    ({channels.length ? channels.length : 0})<Icon name="add" style={{cursor:"pointer"}} onClick={()=>setOpen(true)}/>
                 </Menu.Item>
-                {channels.length > 0 &&channels.map(channel => {
+                {channels.length > 0 ? channels.map(channel => {
                     return(
                         <Menu.Item 
-                            onClick={()=>console.log("CHANNEL", channel)} 
+                            onClick={()=>changeChannel(channel)} 
                             key={channel.id} 
                             name={channel.name} 
                             style={{opacity:0.7}}
+                            active={channel.id === activeChannel}
                         >
                             # {channel.name}
                         </Menu.Item>
                     )
-                })}
+                }) : <p>no channels yet</p>}
             </Menu.Menu>
 
             <Modal basic open={open} onClose={()=>setOpen(false)}>

@@ -40,3 +40,21 @@
   text-align: center;
   padding-bottom:10%;
 }
+
+/* MESSAGES CSS */
+
+.messages{
+  height: 75vh;
+  width:100%;
+  /* overflow-y:scroll; */
+}
+
+/* Messages Area */
+.message__form{
+  position:fixed !important;
+  bottom: 1em;
+  margin-left:320px !important;
+  left:0;
+  right:1em;
+  z-index:200;
+}

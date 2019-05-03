@@ -3,14 +3,18 @@ import React from 'react'
 export const Store = React.createContext(); //creates context object
 
 const initialState = {
+    //User State
     b_loggedIn: true,
+    id:"",
     username: "Drewsup123",
     email : "drew@drew.com",
     profilePicture: "http://svgur.com/i/65U.svg",
     phoneNumber: "",
     dateCreated: "",
     friends: [],
+    //Channel State
     channels:[],
+    currentChannel:{}
 }
 
 const empty = {
@@ -28,6 +32,7 @@ function reducer(state, action) {
         case 'LOGGED_IN':
             return{
                 ...state, 
+                id:action.payload.id,
                 b_loggedIn : true,
                 username: action.payload.username,
                 email: action.payload.email,
@@ -37,7 +42,9 @@ function reducer(state, action) {
                 friends: action.payload.friends,
             }
         case 'SIGNED_OUT':
-            return{empty}
+            return empty
+        case 'CHANGE_CURRENT_CHANNEL':
+            return {...state, currentChannel : action.payload}
         default:
             return state;
     }

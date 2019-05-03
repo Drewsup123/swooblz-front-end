@@ -10,8 +10,9 @@ export default function UserPanel(){
     const handleSignOut = () => {
         Load_Firebase();
         firebase.auth().signOut().then(()=>{
-            alert("signed out")
             return(dispatch({type: "SIGNED_OUT"}))
+        }).catch(err => {
+            console.log("Error loggin out", err)
         })
     }
 
