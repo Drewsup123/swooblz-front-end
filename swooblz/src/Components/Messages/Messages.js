@@ -11,6 +11,8 @@ import Message from './Message';
 export default function Messages(){
     const [messages, setMessages] = React.useState([]);
     const [loadingMessages, setLoadingMessages] = React.useState(false);
+    const [searchTerm, setSearchTerm] = React.useState('');
+    const [searchResults, setSearchResults] = React.useState([]);
     const {state, dispatch} = React.useContext(Store);
 
     const getMessages = () =>{
@@ -23,6 +25,22 @@ export default function Messages(){
         setMessages(loadedMessages)
     }
 
+    const search = e => {
+        if(!e.target.value){
+            setSearchTerm('')
+        }
+        setSearchTerm(e.target.value);
+        const messagesCopy = [...messages];
+        const regex = new RegExp(searchTerm, 'gi');
+        const searchResults = messagesCopy.reduce((acc, message) => {
+            if(message.content && message.content.match(regex) || message.user.username && message.user.username.match(regex)){
+                acc.push(message)
+            }
+            return acc;
+        }, [])
+        setSearchResults(searchResults);
+    }
+
     React.useEffect(()=>{
         if(typeof state.currentChannel != 'undefined'){
             if(state.currentChannel.id){
@@ -33,12 +51,16 @@ export default function Messages(){
 
     return(
         <React.Fragment>
-            <MessagesHeader />
+            <MessagesHeader searchTerm={searchTerm} search={search} messages={messages}/>
 
             <Segment>
                 <Comment.Group className="messages">
                     {/* Messages */}
-                    {messages.map(message => <Message key={message.timestamp} message={message}/>)}
+                    {searchTerm 
+                        ? 
+                        searchResults.map(message => <Message key={message.timestamp} message={message} />)
+                        :
+                        messages.map(message => <Message key={message.timestamp} message={message}/>)}
                 </Comment.Group>
             </Segment>
 

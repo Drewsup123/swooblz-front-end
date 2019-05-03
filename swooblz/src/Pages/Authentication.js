@@ -22,7 +22,7 @@ const Authentication = () => {
             let today = new Date();
             const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             const payload = {
-                id:user.uid,
+                uid:user.uid,
                 username : user.displayName,
                 email : user.email,
                 profilePicture : user.photoURL,

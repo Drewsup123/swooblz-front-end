@@ -36,6 +36,7 @@ export default function FileModal(props){
 
             <Modal.Content>
                 <Input onChange={addFile} fluid label="File Types: JPEG, GIF, PNG" name="file" type="file"/>
+                <Modal.Header>Currently Not Working</Modal.Header>
             </Modal.Content>
 
             <Modal.Actions>

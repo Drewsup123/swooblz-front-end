@@ -60,7 +60,7 @@ export default function Channels(){
 
     return(
         <React.Fragment>
-            <Menu.Menu style={{padding:"2em 0"}}>
+            <Menu.Menu className="menu">
                 <Menu.Item>
                     <span>
                         <Icon name="exchange" />CHANNELS

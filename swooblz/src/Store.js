@@ -5,7 +5,7 @@ export const Store = React.createContext(); //creates context object
 const initialState = {
     //User State
     b_loggedIn: true,
-    id:"",
+    id:"1",
     username: "Drewsup123",
     email : "drew@drew.com",
     profilePicture: "http://svgur.com/i/65U.svg",
@@ -32,7 +32,7 @@ function reducer(state, action) {
         case 'LOGGED_IN':
             return{
                 ...state, 
-                id:action.payload.id,
+                id:action.payload.uid,
                 b_loggedIn : true,
                 username: action.payload.username,
                 email: action.payload.email,

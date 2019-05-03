@@ -20,7 +20,7 @@ export default function Message(props){
                 <Comment.Metadata>
                     {timeFromNow(props.message.timestamp)}
                 </Comment.Metadata>
-                <Comment.Text>{props.message.content}</Comment.Text>
+                {props.message.content ? <Comment.Text>{props.message.content}</Comment.Text> : <img src={props.message.image} />}
             </Comment.Content>
         </Comment>
     );
