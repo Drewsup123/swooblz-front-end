@@ -11,7 +11,7 @@ export default function Load_Firebase() {
             storageBucket: "swooblz.appspot.com",
             messagingSenderId: "370329610912"
         };
-        console.log("CONFIG", config)
+        // console.log("CONFIG", config)
         if (!firebase.apps.length) {
             firebase.initializeApp(config);
         }

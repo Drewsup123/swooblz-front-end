@@ -5,6 +5,7 @@ import MessageForm from './MessagesForm';
 import Load_Firebase from '../../firebaseConfig';
 import firebase from 'firebase';
 import {Store} from '../../Store';
+import Message from './Message';
 // const messagesRef = firebase.database().ref('messages');
 
 export default function Messages(){
@@ -23,10 +24,10 @@ export default function Messages(){
     }
 
     React.useEffect(()=>{
-        if(state.currentChannel.id){
-            getMessages()
-        }else{
-            return;
+        if(typeof state.currentChannel != 'undefined'){
+            if(state.currentChannel.id){
+                getMessages()
+            }
         }
     })
 
@@ -37,10 +38,9 @@ export default function Messages(){
             <Segment>
                 <Comment.Group className="messages">
                     {/* Messages */}
-                    {messages.map(message => <h1>{message.content}</h1>)}
+                    {messages.map(message => <Message key={message.timestamp} message={message}/>)}
                 </Comment.Group>
             </Segment>
-            <button onClick={getMessages}> Get Messages </button>
 
             <MessageForm />
         </React.Fragment>
